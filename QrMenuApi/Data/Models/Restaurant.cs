@@ -36,5 +36,7 @@ namespace QrMenuApi.Data.Models
         public State? State { get; set; }
 
         public Company? Company { get; set; }
+
+        public virtual List<Category>? Categories { get; set; }
     }
 }

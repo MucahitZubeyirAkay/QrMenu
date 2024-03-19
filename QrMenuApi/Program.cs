@@ -1,7 +1,9 @@
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
+using QrMenuApi.AutoMapper;
 using QrMenuApi.Data.Context;
 using QrMenuApi.Data.Models;
+using System.Reflection;
 
 namespace QrMenuApi
 {
@@ -21,6 +23,9 @@ namespace QrMenuApi
             builder.Services.AddDbContext<QrMenuApiContext>(options => options.UseSqlServer(builder.Configuration.GetConnectionString("ApplicationDatabase")));
             builder.Services.AddIdentity<ApplicationUser, IdentityRole>()
                 .AddEntityFrameworkStores<QrMenuApiContext>();
+
+            //builder.Services.AddAutoMapper(typeof(AutoMapperConfig));
+            builder.Services.AddAutoMapper(Assembly.GetExecutingAssembly());
 
             var app = builder.Build();
 

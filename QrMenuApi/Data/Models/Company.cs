@@ -1,4 +1,5 @@
 ﻿using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace QrMenuApi.Data.Models
 {
@@ -44,8 +45,13 @@ namespace QrMenuApi.Data.Models
 
         public byte StateId { get; set; }
 
+
+        public int? ParentCompanyId { get; set; }
+
         public Company? ParentCompany { get; set; }
 
         public State? State { get; set; }
+
+        public virtual List<Restaurant>? Restaurants { get; set; }
     }
 }

@@ -12,7 +12,7 @@ using QrMenuApi.Data.Context;
 namespace QrMenuApi.Data.Migrations
 {
     [DbContext(typeof(QrMenuApiContext))]
-    [Migration("20240317220033_InitialCreate")]
+    [Migration("20240318211652_InitialCreate")]
     partial class InitialCreate
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)

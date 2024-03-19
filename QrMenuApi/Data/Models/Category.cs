@@ -28,5 +28,7 @@ namespace QrMenuApi.Data.Models
         public State? State { get; set; }
 
         public Restaurant? Restaurant { get; set; }
+
+        public virtual List<Food> Foods { get; set; }
     }
 }

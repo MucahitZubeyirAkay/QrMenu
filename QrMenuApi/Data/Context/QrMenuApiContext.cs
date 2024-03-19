@@ -97,19 +97,19 @@ namespace QrMenuApi.Data.Context
             //Restaurant-State, Restaurant-Company
             modelBuilder.Entity<Restaurant>().HasKey(r => r.Id);
             modelBuilder.Entity<Restaurant>().HasOne(r => r.State).WithMany().HasForeignKey(r => r.StateId).OnDelete(DeleteBehavior.NoAction);
-            modelBuilder.Entity<Restaurant>().HasOne(r => r.Company).WithMany().HasForeignKey(r => r.CompanyId).OnDelete(DeleteBehavior.NoAction);
+            modelBuilder.Entity<Restaurant>().HasOne(r => r.Company).WithMany(c=> c.Restaurants).HasForeignKey(r => r.CompanyId).OnDelete(DeleteBehavior.NoAction);
 
 
             //Category-State, Category-Restaurant
             modelBuilder.Entity<Category>().HasKey(ct => ct.Id);
             modelBuilder.Entity<Category>().HasOne(ct => ct.State).WithMany().HasForeignKey(ct => ct.StateId).OnDelete(DeleteBehavior.NoAction);
-            modelBuilder.Entity<Category>().HasOne(ct => ct.Restaurant).WithMany().HasForeignKey(ct => ct.RestraurantId).OnDelete(DeleteBehavior.NoAction);
+            modelBuilder.Entity<Category>().HasOne(ct => ct.Restaurant).WithMany(r=> r.Categories).HasForeignKey(ct => ct.RestraurantId).OnDelete(DeleteBehavior.NoAction);
 
 
             //Food-State, Food-Category
             modelBuilder.Entity<Food>().HasKey(f => f.Id);
             modelBuilder.Entity<Food>().HasOne(f => f.State).WithMany().HasForeignKey(f => f.StateId).OnDelete(DeleteBehavior.NoAction);
-            modelBuilder.Entity<Food>().HasOne(f => f.Category).WithMany().HasForeignKey(f => f.CategoryId).OnDelete(DeleteBehavior.NoAction);
+            modelBuilder.Entity<Food>().HasOne(f => f.Category).WithMany(ct=> ct.Foods).HasForeignKey(f => f.CategoryId).OnDelete(DeleteBehavior.NoAction);
 
 
             //ApplicationUser-State, ApplicationUser-Company
